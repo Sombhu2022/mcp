@@ -46,22 +46,36 @@ export const ChatInterface = () => {
     setMessages(prev => [...prev, userMessage]);
     setIsTyping(true);
 
-    const { data } = await axios.post('http://localhost:3000/chat' , body)
-
-    console.log(data);
-    
-
-
-    // Simulate bot response
-    
-      const botResponse: Message = {
-        id: (Date.now() + 1).toString(),
-        text: data.reply,
-        sender: 'bot',
-        timestamp: new Date(),
-      };
+    try {
+      const { data } = await axios.post('https://mcp-server-api.vercel.app/chat' , body)
+  
+      console.log(data);
+  
+      // Simulate bot response
       
-      setMessages(prev => [...prev, botResponse]);
+        const botResponse: Message = {
+          id: (Date.now() + 1).toString(),
+          text: data.reply,
+          sender: 'bot',
+          timestamp: new Date(),
+        };
+        
+        setMessages(prev => [...prev, botResponse]);
+      
+    } catch (error) {
+
+      const botResponse: Message = {
+          id: (Date.now() + 1).toString(),
+          text: "Something Error or Service not available. Please try again .",
+          sender: 'bot',
+          timestamp: new Date(),
+        };
+        
+        setMessages(prev => [...prev, botResponse]);
+      
+      
+    }
+
       setIsTyping(false);
    
   };

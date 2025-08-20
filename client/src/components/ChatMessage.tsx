@@ -1,5 +1,6 @@
 import { Message } from './ChatInterface';
 import { cn } from '@/lib/utils';
+import MarkDownTextFormater from './MarkDownTextFormater';
 
 interface ChatMessageProps {
   message: Message;
@@ -30,7 +31,9 @@ export const ChatMessage = ({ message }: ChatMessageProps) => {
               : 'bg-chat-bot-bg text-chat-bot-text mr-4 rounded-bl-md border border-border'
           )}
         >
-          <p className="text-sm leading-relaxed">{message.text}</p>
+          <div className="text-sm leading-relaxed">
+            <MarkDownTextFormater content={message.text} />
+          </div>
           <div className="mt-1 opacity-70">
             <span className="text-xs">
               {message.timestamp.toLocaleTimeString([], { 

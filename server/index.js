@@ -143,11 +143,11 @@ const app = express();
 app.use(bodyParser.json());
 app.use(
   cors(
-//     {
-//     origin: "http://localhost:8080", // Allow all origins
-//     methods: "GET,HEAD,PUT,PATCH,POST,DELETE", // Allow specific methods
-//     credentials: true,
-//   }
+    {
+    origin:[ "https://auditflow-chatboat.vercel.app" , "http://localhost:8080" ], // Allow all origins
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE", // Allow specific methods
+    
+  }
 )
 );
 app.use(express.json({ limit: "500mb" }));
