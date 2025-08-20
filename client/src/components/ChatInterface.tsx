@@ -12,6 +12,7 @@ export interface Message {
 }
 
 export const ChatInterface = () => {
+  const [ip, setIp] = useState("");
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
@@ -27,6 +28,15 @@ export const ChatInterface = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
+    
+
+  useEffect(() => {
+    fetch("https://api.ipify.org?format=json")
+      .then((res) => res.json())
+      .then((data) => setIp(data.ip))
+      .catch((err) => console.error(err));
+  }, []);
+
   useEffect(() => {
     scrollToBottom();
   }, [messages, isTyping]);
@@ -40,7 +50,7 @@ export const ChatInterface = () => {
     };
 
     const body =  {
-    "sessionId":"user2=1",
+    "sessionId":ip,
     "message" :text
     }
     setMessages(prev => [...prev, userMessage]);
