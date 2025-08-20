@@ -166,7 +166,7 @@ const sessions = {}; // Store chat history per user/session
 
 // Connect to MCP server once
 await mcpClient.connect(
-  new SSEClientTransport(new URL("https://mcp-server-six-pink.vercel.app/sse"))
+  new SSEClientTransport(new URL(`${process.env.MCP_URL}/sse`))
 );
 console.log("Connected to MCP server");
 
