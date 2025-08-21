@@ -56,8 +56,11 @@ export const ChatInterface = () => {
     setMessages(prev => [...prev, userMessage]);
     setIsTyping(true);
 
+    const url = 'https://mcp-server-api.vercel.app/chat';
+    // const url = 'http://localhost:3000/chat';
+
     try {
-      const { data } = await axios.post('https://mcp-server-api.vercel.app/chat' , body)
+      const { data } = await axios.post(url , body)
   
       console.log(data);
   
