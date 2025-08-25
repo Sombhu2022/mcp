@@ -56,8 +56,8 @@ export const ChatInterface = () => {
     setMessages(prev => [...prev, userMessage]);
     setIsTyping(true);
 
-    const url = 'https://mcp-server-api.vercel.app/chat';
-    // const url = 'http://localhost:3000/chat';
+    // const url = 'https://mcp-server-api.vercel.app/chat';
+    const url = 'http://localhost:3000/chat';
 
     try {
       const { data } = await axios.post(url , body)
@@ -109,7 +109,7 @@ export const ChatInterface = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen w-2/3 bg-gradient-background">
+    <div className="flex flex-col h-screen  md:w-2/3 bg-gradient-background">
       {/* Header */}
       <div className="p-6 bg-gradient-glass border-b border-border backdrop-blur-sm">
         <h1 className="text-2xl font-bold text-foreground">Personal Assistant</h1>
