@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Send, Mic } from 'lucide-react';
@@ -6,10 +6,17 @@ import { Send, Mic } from 'lucide-react';
 interface ChatInputProps {
   onSendMessage: (message: string) => void;
   disabled?: boolean;
+  value? : String 
 }
 
-export const ChatInput = ({ onSendMessage, disabled }: ChatInputProps) => {
+export const ChatInput = ({ onSendMessage, disabled , value="" }: ChatInputProps) => {
   const [message, setMessage] = useState('');
+
+  useEffect(()=>{
+     if(value){
+      setMessage(value as string)
+     }
+  } , [value])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
