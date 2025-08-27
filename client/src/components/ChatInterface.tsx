@@ -221,7 +221,7 @@ export const ChatInterface = () => {
     // 📘 Knowledge Base (product + MongoDB concepts)
     {
       title: "📘 What is AuditFlow?",
-      text: "Explain briefly what AuditFlow does in simple words",
+      text: "Explain what AuditFlow does",
     },
     {
       title: "📞 How to contact?",
